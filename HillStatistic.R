@@ -23,14 +23,14 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
         max <- matrix[Row+j, Col+k]
         NewRow <- Row+j
         NewCol <- Col+k
-        }
-    }
-    if (Row == NewRow & Col == NewCol) {
-      return(matrix[Row, Col])
+      }
+      if (Row == NewRow & Col == NewCol) {
+        return(matrix[Row, Col])
+      }
     }
     Row <- NewRow
     Col <- NewCol
-    }
+  }
   return(matrix[Row, Col])
 }
 
