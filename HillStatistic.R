@@ -10,6 +10,7 @@
 ## My impression is it needs a lot of resamplings to converge to a p-value, hence I set some defaults.
 
 ## A basic hill climbing algorithm
+
 KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or smaller matrices
   RowIndices <- 1:nrow(matrix)
   ColIndices <- 1:ncol(matrix)
@@ -44,6 +45,7 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
 }
 
 ## Permutes the matrix structure
+
 PermuteMatrix <- function(matrix) {
   Matrix <- matrix(sample(matrix, length(matrix), replace = F), nrow = nrow(matrix))
 }
