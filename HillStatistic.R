@@ -47,9 +47,9 @@ RandomHillClimb <- function(matrix, ...) {
   max
 }
 
-## This will be the significance test, but its garbage currently
+## This is the significance test
 
-Hilly <- function(matrix, reps = 10000, RoundTo = 0.01, ...) {
+Hilly <- function(matrix, reps = 100000, RoundTo = 0.0001, ...) {
   RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
   ExperiencedClimber <- replicate(reps, KingOfTheHill(matrix))
   Max <- max(matrix)
