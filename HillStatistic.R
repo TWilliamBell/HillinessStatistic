@@ -49,11 +49,17 @@ RandomHillClimb <- function(matrix, ...) {
 
 ## This will be the significance test, but its garbage currently
 
-Hilly <- function(matrix, reps = 1000, ...) {
+Hilly <- function(matrix, reps = 1000, RoundTo = 0.01, ...) {
   RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
-  ExperiencedClimber <- replicate(reps, matrix)
+  ExperiencedClimber <- replicate(reps, KingOfTheHill(matrix))
   Max <- max(matrix)
   ProportionOfSuccessesForActualMatrix <- sum(Max == ExperiencedClimber)/reps
-  ProportionOfSuccessesForPermutedMatrix <- sum(Max == RandomClimber)/reps
-  return(c(ProportionOfSuccessesForActualMatrix, ProportionOfSuccessesForPermutedMatrix))
+  ProportionOfSuccessesForPermutedMatrix <- rep(NA_real_, 1/RoundTo)
+  for (i in 0:as.integer((1/RoundTo)-1)) {
+    ## ProportionOfSuccessesForPermutedMatrix[i+1] <- sum(Max == RandomClimber[((i*reps)%/%(1/RoundTo)):(((i+1)*reps)%/%(1/RoundTo))])/reps
+    ## This part is giving me trouble, trying to divide up the trial runs into groups and then find the proportion of successes for each of
+    ## those groups, so it can be compared to the actual result.
+  }
+  PValue <- sum(ProportionOfSuccessesForPermutedMatrix > ProportionOfSuccessesForActualMatrix)/as.integer(1/RoundTo)
+  PValue
 }
