@@ -16,24 +16,23 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for sparse
   while (i < length(matrix)) {
     i <- i+1
     max <- matrix[Row, Col]
-    for (j in -G:G) {
-      for (k in -G:G) {
-        if (is.element(Row+j, RowIndices) & is.element(Col+k, ColIndices)) {
-          if (matrix[Row+j, Col+k] > max) {
-            max <- matrix[Row+j, Col+k]
-            NewRow <- Row+j
-            NewCol <- Col+k
-            }
-          }
+    j <- sample(-G:G, 1)
+    k <- sample(-G:G, 1)
+    if (is.element(Row+j, RowIndices) & is.element(Col+k, ColIndices)) {
+      if (matrix[Row+j, Col+k] > max) {
+        max <- matrix[Row+j, Col+k]
+        NewRow <- Row+j
+        NewCol <- Col+k
         }
     }
     if (Row == NewRow & Col == NewCol) {
-      return(max)
+      return(matrix[Row, Col])
     }
     Row <- NewRow
     Col <- NewCol
     }
-  warning("Hill climbing algorithm timed out, invalid input?") 
+  warning("Hill climbing algorithm timed out, invalid input?")
+  return(matrix[Row, Col])
 }
 
 ## Permutes the matrix structure
