@@ -2,7 +2,7 @@
 
 ## The test is more or less considering how good the function is at climbing the hill of your matrix. 
 ## If it is significantly better at climbing the hill enough to get to the top of your actual matrix 
-## much more than permuted versions of your matrix, then your matrix is probably significantly hillier 
+## much more often than permuted versions of your matrix, then your matrix is probably significantly hillier 
 ## than any random combination of the numbers that make up the matrix. Note this means your comparison 
 ## class is systems with the same kinds of values for entries in the matrix, if that is not the case 
 ## you can probably make a bunch of permuted matrices that are designed to act according to your null hypothesis.
