@@ -51,10 +51,10 @@ RandomHillClimb <- function(matrix, ...) {
 
 Hilly <- function(matrix, reps = 100000, RoundTo = 0.0001, ...) {
   RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
-  ExperiencedClimber <- replicate(reps, KingOfTheHill(matrix))
+  ExperiencedClimber <- replicate(reps, KingOfTheHill(matrix, ...))
   Max <- max(matrix)
   ProportionOfSuccessesForActualMatrix <- mean(sum(Max == ExperiencedClimber)/reps)
-  ProportionOfSuccessesForPermutedMatrix <- rep(NA_real_, 1/RoundTo)
+  ProportionOfSuccessesForPermutedMatrix <- rep(NA_real_, as.integer(1/RoundTo))
   for (i in 0:as.integer((1/RoundTo)-1)) {
     ProportionOfSuccessesForPermutedMatrix[i+1] <- mean(Max == RandomClimber[((i*reps)%/%(1/RoundTo)):(((i+1)*reps)%/%(1/RoundTo))])
   }
