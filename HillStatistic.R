@@ -47,7 +47,7 @@ RandomHillClimb <- function(matrix, ...) {
   max
 }
 
-## SignificanceTest
+## Significance Test
 
 Hilly <- function(matrix, reps = 1000, ...) {
   ExperiencedClimber <- replicate(reps, RandomHillClimb(matrix, ...))
