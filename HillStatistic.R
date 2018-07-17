@@ -47,7 +47,7 @@ RandomHillClimb <- function(matrix, ...) {
   max
 }
 
-## This is the significance test
+## This is the significance test with null hypothesis being the same values for the matrix entries but in any random position
 
 Hilly <- function(matrix, reps = 100000, RoundTo = 0.0001, ...) {
   RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
