@@ -1,6 +1,6 @@
 ## Hilliness Statistic ##
 
-##The test is more or less considering how good the function is at climbing the hill of your matrix. 
+## The test is more or less considering how good the function is at climbing the hill of your matrix. 
 ## If it is significantly better at climbing the hill enough to get to the top of your actual matrix 
 ## than it is at permuted versions of your matrix, then your matrix is probably significantly hillier 
 ## than any random combination of the numbers that make up the matrix. Note this means your comparison 
