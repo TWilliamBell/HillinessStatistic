@@ -58,6 +58,6 @@ Hilly <- function(matrix, reps = 10000, RoundTo = 0.01, ...) {
   for (i in 0:as.integer((1/RoundTo)-1)) {
     ProportionOfSuccessesForPermutedMatrix[i+1] <- mean(Max == RandomClimber[((i*reps)%/%(1/RoundTo)):(((i+1)*reps)%/%(1/RoundTo))])
   }
-  PValue <- sum(ProportionOfSuccessesForPermutedMatrix > ProportionOfSuccessesForActualMatrix)/as.integer(1/RoundTo)
+  PValue <- mean(ProportionOfSuccessesForPermutedMatrix > ProportionOfSuccessesForActualMatrix)
   PValue
 }
