@@ -50,8 +50,10 @@ RandomHillClimb <- function(matrix, ...) {
 ## This will be the significance test, but its garbage currently
 
 Hilly <- function(matrix, reps = 1000, ...) {
-  ExperiencedClimber <- replicate(reps, RandomHillClimb(matrix, ...))
+  RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
+  ExperiencedClimber <- replicate(reps, matrix)
   Max <- max(matrix)
-  SignificanceLevel <- 1-sum(Max > ExperiencedClimber)/reps
-  SignificanceLevel
+  ProportionOfSuccessesForActualMatrix <- sum(Max == ExperiencedClimber)/reps
+  ProportionOfSuccessesForPermutedMatrix <- sum(Max == RandomClimber)/reps
+  return(c(ProportionOfSuccessesForActualMatrix, ProportionOfSuccessesForPermutedMatrix))
 }
