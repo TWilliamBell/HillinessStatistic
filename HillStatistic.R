@@ -1,7 +1,7 @@
 ## Hilliness Statistic ##
 
 ## A basic hill climbing algorithm
-KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for sparse matrices, or 2x2 matrices
+KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or smaller matrices
   RowIndices <- 1:nrow(matrix)
   ColIndices <- 1:ncol(matrix)
   Row <- sample(RowIndices, 1)
@@ -31,7 +31,6 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for sparse
     Row <- NewRow
     Col <- NewCol
     }
-  warning("Hill climbing algorithm timed out, invalid input?")
   return(matrix[Row, Col])
 }
 
