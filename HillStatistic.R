@@ -47,7 +47,7 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
 ## Permutes the matrix structure
 
 PermuteMatrix <- function(matrix) {
-  Matrix <- matrix(sample(matrix, length(matrix), replace = F), nrow = nrow(matrix))
+  Matrix <- matrix(sample(matrix), nrow = nrow(matrix))
 }
 
 ## Function to be replicated
