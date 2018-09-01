@@ -23,7 +23,7 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
   i <- 1
   NewRow <- Row
   NewCol <- Col
-  while (i < sqrt(length(matrix))) {
+  while (i < length(matrix)) {
     i <- i+1
     max <- matrix[Row, Col]
     j <- sample(-G:G, 1)
@@ -63,7 +63,7 @@ Hilly <- function(matrix, reps = 100000, RoundTo = 0.0001, ...) {
   Max <- max(matrix)
   ProportionOfSuccessesForActualMatrix <- mean(Max == ExperiencedClimber)
   ProportionOfSuccessesForPermutedMatrix <- rep(NA_real_, as.integer(1/RoundTo))
-  for (i in 0:as.integer((1/RoundTo)-1)) {
+  for (i in 0:(as.integer((1/RoundTo)-1))) {
     ProportionOfSuccessesForPermutedMatrix[i+1] <- mean(Max == RandomClimber[((i*reps)%/%(1/RoundTo)):(((i+1)*reps)%/%(1/RoundTo))])
   }
   PValue <- mean(ProportionOfSuccessesForPermutedMatrix > ProportionOfSuccessesForActualMatrix)
