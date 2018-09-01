@@ -23,7 +23,7 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
   i <- 1
   NewRow <- Row
   NewCol <- Col
-  while (i < length(matrix)) {
+  while (i < sqrt(length(matrix))) {
     i <- i+1
     max <- matrix[Row, Col]
     j <- sample(-G:G, 1)
@@ -33,9 +33,6 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
         max <- matrix[Row+j, Col+k]
         NewRow <- Row+j
         NewCol <- Col+k
-      }
-      if (Row == NewRow & Col == NewCol) {
-        return(matrix[Row, Col])
       }
     }
     Row <- NewRow
