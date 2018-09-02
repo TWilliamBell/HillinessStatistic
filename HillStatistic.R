@@ -7,8 +7,6 @@
 ## class is systems with the same kinds of values for entries in the matrix, if that is not the case 
 ## you can probably make a bunch of permuted matrices that are designed to act according to your null hypothesis.
 
-## My impression is it needs a lot of resamplings to converge to a p-value, hence I set some defaults.
-
 ## A basic hill climbing algorithm
 
 KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or smaller matrices
