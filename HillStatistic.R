@@ -60,15 +60,9 @@ RandomHillClimb <- function(matrix, ...) {
 
 ## This is the significance test with null hypothesis being the same values for the matrix entries but in any random position
 
-Hilly <- function(matrix, reps = 100000, RoundTo = 0.0001, ...) {
-  RandomClimber <- replicate(reps, RandomHillClimb(matrix, ...))
-  ExperiencedClimber <- replicate(as.integer(1/RoundTo), KingOfTheHill(matrix, ...))
-  Max <- max(matrix)
-  ProportionOfSuccessesForActualMatrix <- mean(Max == ExperiencedClimber)
-  ProportionOfSuccessesForPermutedMatrix <- rep(NA_real_, as.integer(1/RoundTo))
-  for (i in 0:(as.integer((1/RoundTo)-1))) {
-    ProportionOfSuccessesForPermutedMatrix[i+1] <- mean(Max == RandomClimber[((i*reps)%/%(1/RoundTo)):(((i+1)*reps)%/%(1/RoundTo))])
-  }
-  PValue <- mean(ProportionOfSuccessesForPermutedMatrix > ProportionOfSuccessesForActualMatrix)
-  PValue
+permutationMeanDifferenceHilly <- function(matrix, repsStep1 = 1000, repsStep2 = 1000) {
+  regularMatrixClimb <- replicate(repsStep1, KingOfTheHill(matrix))
+  permutedMatrixClimb <- replicate(repsStep1, RandomHillClimb(matrix))
+  permutationMeanDiff <- replicate(repsStep2, mean(sample(regularMatrixClimb, size = repsStep1, replace = T)) - mean(sample(permutedMatrixClimb, size = repsStep1, replace = T)))
+  list(meanDiff = mean(permutationMeanDiff), pValueMeanDiffGreaterThan0 = ifelse((1-mean(permutationMeanDiff > 0)) > 0, (1-mean(permutationMeanDiff > 0)), paste0(1/repsStep2, " >")), fullResult = permutationMeanDiff)
 }
