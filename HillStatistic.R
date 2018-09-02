@@ -58,7 +58,8 @@ RandomHillClimb <- function(matrix, ...) {
   max
 }
 
-## This is the significance test with null hypothesis being the same values for the matrix entries but in any random position
+## This is the significance test with null hypothesis being the same values for the matrix entries but in any random position, also
+## has an effect size estimate of the hilliness.
 
 permutationMeanDifferenceHilly <- function(matrix, repsStep1 = 1000, repsStep2 = 1000) {
   regularMatrixClimb <- replicate(repsStep1, KingOfTheHill(matrix))
