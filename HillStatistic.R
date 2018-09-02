@@ -23,7 +23,7 @@ KingOfTheHill <- function(matrix, GradualSlope = F) { ## Doesn't work for 2x2 or
   i <- 1
   NewRow <- Row
   NewCol <- Col
-  while (i < 2*max(nrow(matrix), ncol(matrix))) {
+  while (i < length(matrix)) {
     i <- i+1
     max <- matrix[Row, Col]
     j <- sample(-G:G, 1)
